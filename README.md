@@ -18,12 +18,10 @@ Dự án Landing Page Travel là một trang web giới thiệu dịch vụ du l
 
 ##Cách cài đặt và chạy dự án
 	1.	Clone repository:
-
 git clone https://github.com/your-repo/landing-page-travel.git
 cd landing-page-travel
+2. Mở file index.php trên trình duyệt 
 
-
-	2.	Mở index.php trên trình duyệt.
 ##Góp ý
 
 Mọi đóng góp đều được hoan nghênh! Hãy mở issue hoặc gửi pull request trên GitHub.
