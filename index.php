@@ -18,6 +18,24 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- Google Translate Element -->
+<div id="google_translate_element" style="position: fixed; bottom: 10px; left: 10px; z-index: 9999;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'vi',
+        includedLanguages: 'vi,en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
         <style>
         .masthead {
   position: relative;
@@ -318,6 +336,7 @@ box-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
                     <ul class="navbar-nav ms-auto">
                         <li  class="nav-item"><a  class="nav-link" href="#about">THÔNG TIN DỊCH VỤ</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">LỘ TRÌNH</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#price">GIÁ VÉ</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">LIÊN HỆ</a></li>
                     </ul>
                 </div>
@@ -339,13 +358,13 @@ box-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
 <div class="tour-header">
-    <h1>Tour Du Lịch 5 Ngày 4 Đêm</h1>
+    <h1>Tour Du Lịch Nhật Bản</h1>
     <p>Khám phá vẻ đẹp của những địa danh nổi tiếng với hành trình đặc sắc, đầy ắp kỷ niệm.</p>
 </div>
 
 <div class="tour-info">
     <h2>Thông Tin Tour</h2>
-    <p>Tham gia tour du lịch 5 ngày 4 đêm, bạn sẽ có cơ hội khám phá những địa điểm du lịch nổi bật và thưởng thức các
+    <p>Tham gia tour du lịch Nhật Bản - Đất Nước Mặt Trời Mọc, bạn sẽ có cơ hội khám phá những địa điểm du lịch nổi bật và thưởng thức các
         món ăn đặc sản tại các điểm đến hấp dẫn. Tour này bao gồm đầy đủ các dịch vụ cần thiết từ việc di chuyển, ăn
         uống đến hướng dẫn viên chuyên nghiệp.</p>
 </div>
@@ -573,12 +592,234 @@ display: block;
         </div>
         </div>
             </div>
-            <div style="margin:20px 30px; text-align:center" class="tour-price">
-                <h2>Giá Tour Du Lịch Nhật Bản</h2>
-                <p class="price-tour">Giá tour du lịch 5 ngày 4 đêm: <strong>15.000.000 VND/người</strong></p>
-                <p class="nhom">
-                    <em>Giá trên bao gồm tất cả các dịch vụ kể trên. <br>Chúng tôi cung cấp các gói tour tùy chỉnh cho nhóm lớn hoặc yêu cầu đặc biệt.</em>
-                </p>
+          <h2 id="projects" STYLE="MARGIN-TOP:30PX; COLOR:BLUE; text-align:center;  padding:10px;">GIÁ THAM KHẢO VÀ ĐẶT VÉ</h2>
+            <div id="price" style="margin:20px 30px; text-align:center" class="tour-price">
+<?php
+$servername = "localhost";
+$username   = "rbgdcnwyhosting_manager"; 
+$password   = "Admin@123"; 
+$dbname     = "rbgdcnwyhosting_manager";         
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    echo "Kết nối thất bại: " . $conn->connect_error;
+    exit();
+}
+
+$categoryIds = [1, 3, 4]; // Các danh mục muốn hiển thị
+
+// CSS
+echo '<style>
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 30px auto;
+    box-sizing: border-box; /* Thêm vào để tránh lệch khi có padding hoặc border */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.category-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 10px 10px;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+    min-width: 100%;
+    justify-content: center; /* Đảm bảo các slide trong track được căn giữa */
+}
+
+.slide {
+    width: 340px;
+    margin: 0 10px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.slide-content {
+    padding: 10px;
+    text-align: left;
+}
+
+.slide-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.slide-info {
+    font-size: 16px;
+    margin-top: 4px;
+    text-align: left;
+}
+
+.slide-info span {
+    color: red;
+}
+
+.slide-price {
+    font-size: 18px;
+    color: #d60000;
+    font-weight: bold;
+    margin-top: 6px;
+    text-align: left;
+}
+
+.slider-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.slider-button {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider-button:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+</style>';
+
+foreach ($categoryIds as $catId) {
+    $sql = "SELECT t.title, t.duration, t.departure, t.price, t.image_url, c.name AS category_name, t.slug AS tour_slug
+            FROM tours t
+            JOIN tour_categories c ON t.category_id = c.id
+            WHERE c.id = $catId";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $firstRow = $result->fetch_assoc();
+        $categoryName = $firstRow['category_name'];
+
+        echo '<div  class="slider-container" id="sliderContainer_' . $catId . '">
+                <h3 class="category-title" style="color:red; font-size:28px; text-transform: uppercase;">' . $categoryName . '</h3>
+                <div class="slider-track" id="sliderTrack_' . $catId . '">' ;
+
+        mysqli_data_seek($result, 0); // reset pointer
+
+        while($row = $result->fetch_assoc()) {
+            $tourLink = $row['tour_slug'];
+            echo '<a target="_blank" href="' . $tourLink . '" class="slide">
+                    <img src="' . $row['image_url'] . '" alt="' . $row['title'] . '" />
+                    <div class="slide-content">
+                        <div class="slide-title">' . $row['title'] . '</div>
+                        <div class="slide-info">🕒 Thời gian: <span>' . $row['duration'] . '</span></div>
+                        <div class="slide-info">📍 Xuất phát: <span>' . $row['departure'] . '</span></div>
+                        <div class="slide-price">' . number_format($row['price'], 0, ',', '.') . '₫</div>
+                    </div>
+                  </a>';
+        }
+
+        echo '</div>
+              <div class="slider-buttons">
+                <button class="slider-button" onclick="slideLeft(' . $catId . ')">❮</button>
+                <button class="slider-button" onclick="slideRight(' . $catId . ')">❯</button>
+              </div>
+              </div>';
+    } else {
+        echo "<p>Không có tour trong danh mục ID $catId.</p>";
+    }
+}
+
+$conn->close();
+?>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Lặp qua tất cả các container slider
+    const sliderContainers = document.querySelectorAll('.slider-container');
+
+    sliderContainers.forEach((sliderContainer) => {
+        const catId = sliderContainer.id.split('_')[1]; // Lấy ID từ phần tử
+        const track = document.getElementById('sliderTrack_' + catId);
+        let currentPosition = 0;
+        let slideWidth;
+        let autoSlideInterval;  // Đảm bảo biến autoSlideInterval được khai báo
+
+        updateSlideWidth(track); // Cập nhật chiều rộng của slide khi trang tải
+        window.addEventListener('resize', () => updateSlideWidth(track)); // Cập nhật khi thay đổi kích thước
+
+        // Kiểm tra xem track có đủ nội dung để tự động trượt không
+        if (track.scrollWidth > sliderContainer.clientWidth) {
+            startAutoSlide(track); // Bắt đầu tự động trượt
+
+            // Dừng auto slide khi hover
+            sliderContainer.addEventListener('mouseover', () => clearInterval(autoSlideInterval));
+            // Tiếp tục auto slide khi bỏ chuột
+            sliderContainer.addEventListener('mouseout', () => startAutoSlide(track));
+        }
+
+        // Hàm bắt đầu tự động chạy slide
+        function startAutoSlide(track) {
+            autoSlideInterval = setInterval(() => {
+                slideRight(track); // Gọi hàm slideRight mỗi 3 giây
+            }, 3000); // Mỗi 3 giây chuyển slide
+        }
+
+        // Cập nhật lại chiều rộng slide
+        function updateSlideWidth(track) {
+            const slideEl = track.querySelector('.slide');
+            if (slideEl) {
+                slideWidth = slideEl.offsetWidth + 20; // Tính chiều rộng của một slide
+            }
+        }
+
+        // Di chuyển slider sang trái
+        function slideLeft(track) {
+            if (currentPosition < 0) {
+                currentPosition += slideWidth;
+                track.style.transform = `translateX(${currentPosition}px)`; // Cập nhật vị trí của track
+            }
+        }
+
+        // Di chuyển slider sang phải
+        function slideRight(track) {
+            const maxScroll = -(track.scrollWidth - sliderContainer.offsetWidth);
+            if (currentPosition > maxScroll) {
+                currentPosition -= slideWidth;
+                track.style.transform = `translateX(${currentPosition}px)`; 
+            } else {
+                currentPosition = 0;
+                track.style.transform = `translateX(0px)`;
+            }
+        }
+
+ 
+        sliderContainer.querySelector('.slider-buttons .slider-button:first-child').addEventListener('click', () => slideLeft(track));
+        sliderContainer.querySelector('.slider-buttons .slider-button:last-child').addEventListener('click', () => slideRight(track));
+    });
+});
+</script>
+
             </div>
         </section>
         <style>
@@ -641,7 +882,7 @@ display: block;
             transition: opacity 0.5s, transform 0.5s  !important;
         }
 registerForm {
-    margin-top: -100px;
+    margin-top: 0px;
     width: 100%;
     max-width: 700px;
     background: rgba(255, 255, 255, 0.9);
@@ -693,13 +934,11 @@ registerForm {
 
     </style>
       
-        <div style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; width: 80%; margin:-80px auto 0px; border-radius: 15px;">
+        <div style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; width: 80%; margin:-100px auto 0px; border-radius: 15px;">
 <div class="contact-section" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
     <h2 style="margin: 0;">LIÊN HỆ NGAY!</h2>
 
 </div>
-
-
 
         <form id="registerForm" class="registerForm" style="margin: 20px 0px; max-width:900px; margin-left: auto; margin-right: auto;">
             <div class="mb-3">
@@ -768,63 +1007,123 @@ registerForm {
 
         </div>
     </section>
-        <!-- Contact-->
-        <footer class="contact-section bg-black">
-        <h2 style="text-align:center; margin-bottom:20px; margin-top:-20px; color:white"> THÔNG TIN CÔNG TY</H2>
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-3 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center" style="color:black;">
-                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Address</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class=" text-black-90"> A6 - Nguyễn Ái Quốc, Tân Phong, Biên Hòa, Đồng Nai</div>
-                            </div>
-                        </div>
+
+<!-- Contact-->
+<footer class="contact-section bg-black">
+    <h2 style="text-align:center; margin-bottom:20px; margin-top:-20px; color:white">THÔNG TIN CÔNG TY</h2>
+    <div class="container-fluid"> <!-- Chuyển từ container thành container-fluid để bỏ padding 2 bên -->
+        <div class="row gx-4"> <!-- Sử dụng gx-4 để tạo khoảng cách giữa các cột -->
+            <!-- Ô 1: Address -->
+            <div class="col-md-2 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center" style="color:black;">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Address</h4>
+                        <hr class="my-4 mx-auto" />
+                        <div class=" text-black-90">A6 - Nguyễn Ái Quốc, Tân Phong, Biên Hòa, Đồng Nai</div>
                     </div>
-                    <div class="col-md-3 mb-3 mb-md-0">
-                    <a class="contact_laha" href="mailto:sub5phut@gmail.com">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Email</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class=" text-black-90">sub5phut@gmail.com</div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 mb-3 mb-md-0">
-                    <a class="contact_laha" href="https://www.facebook.com/lahahouse">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fab fa-facebook-f text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Facebook</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class=" text-black-90">Laha's House</div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                     <div class="col-md-3 mb-3 mb-md-0">
-                        <a class="contact_laha" href="mailto:sub5phut@gmail.com">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Website</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class=" text-black-90">Công ty TNHH TMDV Laha's house</div>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                <div class=" d-flex justify-content-center">
-                  <p style="color:white; margin-top:10px">Copyright &copy by <a style="text-decoration:none; color:#87cefa" href="https://nidtech.vn/">Nidtech</a></p>
                 </div>
             </div>
-        </footer>
+            <!-- Ô 2: Email -->
+            <div class="col-md-2 mb-3 mb-md-0">
+                <a style="text-decoration:none; color:black" class="contact_laha" href="mailto:sub5phut@gmail.com">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-envelope text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Email</h4>
+                            <hr class="my-4 mx-auto" />
+                            <div class=" text-black-90">sub5phut@gmail.com</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Ô 3: Facebook -->
+            <div class="col-md-2 mb-3 mb-md-0">
+                <a style="text-decoration:none; color:black" target="_blank" class="contact_laha" href="https://www.facebook.com/lahahouse">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fab fa-facebook-f text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Facebook</h4>
+                            <hr class="my-4 mx-auto" />
+                            <div class=" text-black-90">Laha's House</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Ô 4: Website -->
+            <div class="col-md-2 mb-3 mb-md-0">
+                <a style="text-decoration:none; color:black" target="_blank" class="contact_laha" href="https://lahatravel.com/">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-envelope text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Website</h4>
+                            <hr class="my-4 mx-auto" />
+                            <div class=" text-black-90">Công ty TNHH TMDV Laha's house</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Ô 5: Đơn Vị Hợp Tác -->
+            <div class="col-md-2 mb-3 mb-md-0">
+                <a style="text-decoration:none; color:black" target="_blank" class="contact_laha" href="https://hktraveljapan.jp/">
+                    <div class="card py-4 h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-handshake text-primary mb-2"></i>
+                            <h4 class="text-uppercase m-0">Đơn Vị Hợp Tác</h4>
+                            <hr class="my-4 mx-auto" />
+                            <div class=" text-black-90">HK Travel Japan</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <p style="color:white; margin-top:10px">Copyright &copy by <a target="_blank" style="text-decoration:none; color:#87cefa" href="https://nidtech.vn/">Nidtech</a></p>
+        </div>
+    </div>
+</footer>
+
+<style>
+.contact-section .container-fluid {
+    padding: 10px; /* Loại bỏ padding của container */
+}
+
+.contact-section .row {
+    margin: 0; /* Loại bỏ margin của row */
+    padding: 0; /* Loại bỏ padding của row */
+}
+
+/* Cấu hình các cột cho desktop */
+.contact-section .col-md-2,
+.contact-section .col-md-3 {
+    padding: 0 5px; /* Thêm khoảng cách giữa các ô */
+}
+
+/* Các cột sẽ có độ rộng linh động */
+.contact-section .col-md-2 {
+    flex: 1 1 20%; /* Các cột sẽ có tỷ lệ rộng 20% */
+}
+
+.contact-section .col-md-3 {
+    flex: 1 1 30%; /* Các cột sẽ có tỷ lệ rộng 30% */
+}
+
+/* Media Query cho điện thoại và tablet */
+@media (max-width: 768px) {
+    .contact-section .col-12 {
+        padding: 0 10px !important; /* Thêm padding giữa các ô trên điện thoại */
+    }
+
+    /* Các cột sẽ chiếm toàn bộ chiều rộng */
+    .contact-section .col-md-2,
+    .contact-section .col-md-3 {
+        flex: 1 1 100%; /* Chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+    }
+}
+
+</style>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
