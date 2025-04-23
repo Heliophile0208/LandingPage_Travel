@@ -18,8 +18,12 @@ Dự án Landing Page Travel là một trang web giới thiệu dịch vụ du l
 
 ## Cách cài đặt và chạy dự án
 1.	Tải code: https://github.com/Heliophile0208/LandingPage_Travel/tree/main
- 
-2. Mở file index.php trên trình duyệt 
+2.	Thay đổi kết nối cơ sở dữ liệu
+	•	$servername = "localhost";
+	•	$username   = "name"; 
+	•	$password   = "pass"; 
+	•	$dbname     = "database name";         
+3. Mở file index.php trên trình duyệt 
 
 ## Góp ý
 
