@@ -18,7 +18,7 @@ Dự án Landing Page Travel là một trang web giới thiệu dịch vụ du l
 
 ## Cách cài đặt và chạy dự án
 1.	Tải code: https://github.com/Heliophile0208/LandingPage_Travel/tree/main
-cd landing-page-travel
+ 
 2. Mở file index.php trên trình duyệt 
 
 ## Góp ý
